@@ -1,0 +1,11 @@
+#  Ignore csv files
+
+*.csv
+*.txt
+*.log
+*.png
+*.ini
+*.json
+*.jpeg
+
+.env
