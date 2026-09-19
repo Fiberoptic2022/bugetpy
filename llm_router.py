@@ -30,6 +30,8 @@ def generate_response(prompt, provider="claude", model=None, fallback=None):
 
     if result is None and fallback:
         print(f"Provider '{provider}' failed, falling back to '{fallback}'.")
-        return generate_response(prompt, provider=fallback, model=model)
+        # model names aren't portable across providers (e.g. "llama3.1" isn't
+        # a Claude model), so let the fallback provider use its own default.
+        return generate_response(prompt, provider=fallback)
 
     return result

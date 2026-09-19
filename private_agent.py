@@ -1,4 +1,9 @@
-from open_webui_client import generate_response
+import llm_router
+
+
+def generate_response(model, prompt):
+    """Try the local Open WebUI model first, fall back to Claude if unreachable."""
+    return llm_router.generate_response(prompt, provider="open_webui", model=model, fallback="claude")
 
 # Example content for sensitive data; replace with actual data load as needed
 data = """Investing and learning to save are essential skills for financial well-being. 

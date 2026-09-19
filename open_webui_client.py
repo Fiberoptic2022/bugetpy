@@ -49,8 +49,13 @@ def get_client_settings():
     return base_url.rstrip("/"), api_key
 
 
-def generate_response(model, prompt, messages=None, timeout=120):
-    """Send a chat completion request to Open WebUI and return the reply text."""
+def generate_response(model, prompt, messages=None, timeout=120, connect_timeout=5):
+    """Send a chat completion request to Open WebUI and return the reply text.
+
+    connect_timeout bounds how long we wait to establish the connection (fails
+    fast if the host is unreachable); timeout bounds how long we wait for the
+    model to finish generating once connected (can legitimately be slow).
+    """
     base_url, api_key = get_client_settings()
     payload_messages = messages or [{"role": "user", "content": prompt}]
 
@@ -62,7 +67,7 @@ def generate_response(model, prompt, messages=None, timeout=120):
                 "Content-Type": "application/json",
             },
             json={"model": model, "messages": payload_messages},
-            timeout=timeout,
+            timeout=(connect_timeout, timeout),
         )
         response.raise_for_status()
         return response.json()["choices"][0]["message"]["content"]
