@@ -9,3 +9,6 @@
 *.jpeg
 
 .env
+
+__pycache__/
+*.pyc
