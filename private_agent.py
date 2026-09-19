@@ -1,34 +1,4 @@
-import subprocess
-import ollama
-
-# Function to pull the LLaMA model using Ollama CLI
-# def pull_model(model_name):
-#     try:
-#         # Attempt to pull the specified model
-#         result = subprocess.run(["ollama", "pull", model_name], check=True, capture_output=True, text=True)
-#         print(f"Model {model_name} pulled successfully:\n{result.stdout}")
-#     except subprocess.CalledProcessError as e:
-#         # Handle errors related to the model pulling process
-#         print(f"Failed to pull the model {model_name}. Error: {e.stderr}")
-#         exit()
-#     except FileNotFoundError:
-#         # Handle case where Ollama CLI is not found
-#         print("Ollama CLI not found. Ensure that Ollama is installed and in your PATH.")
-#         exit()
-
-# Pull the LLaMA 3.1 model before generating responses
-# pull_model("llama3.1")
-
-# Function to generate AI response using the Ollama API
-def generate_response(model, prompt):
-    try:
-        # Call Ollama API to generate response
-        response = ollama.chat(model=model, messages=[{"role": "user", "content": prompt}])
-        return response["message"]["content"]
-    except Exception as e:
-        # Handle any errors during the API call
-        print(f"An error occurred while generating the response: {e}")
-        return None
+from open_webui_client import generate_response
 
 # Example content for sensitive data; replace with actual data load as needed
 data = """Investing and learning to save are essential skills for financial well-being. 
