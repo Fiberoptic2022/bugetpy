@@ -18,7 +18,7 @@ prompt_01 = f"{data}"
 print("<agent-01> Generating response...")
 
 # Generate the first response about Bitcoin
-response_01_content = generate_response("llama3.1", "Teach me about Bitcoin.")
+response_01_content = generate_response(None, "Teach me about Bitcoin.")
 if response_01_content:
     print(response_01_content)
 
@@ -27,7 +27,7 @@ prompt_02 = f"{response_01_content} Now, explain the concept of a 'blockchain' i
 print("<agent-02> Generating response... Explain the concept of stocks and investments ... Explain the best 3 ways to save and earn money... and the best positions to take in the market based on recent data ...")
 
 # Generate the second response explaining blockchain
-response_02_content = generate_response("llama3.1", prompt_02)
+response_02_content = generate_response(None, prompt_02)
 if response_02_content:
     print(response_02_content)
 
@@ -36,7 +36,7 @@ prompt_03 = f"{response_02_content} Can you also explain how Bitcoin transaction
 print("<agent-03> Generating response...")
 
 # Generate the third response about Bitcoin transaction verification
-response_03_content = generate_response("llama3.1", prompt_03)
+response_03_content = generate_response(None, prompt_03)
 if response_03_content:
     print(response_03_content)
 
@@ -45,7 +45,7 @@ prompt_04 = f"{response_03_content} Finally, can you explain how Bitcoins are cr
 print("<agent-04> Generating response...")
 
 # Generate the fourth response about Bitcoin mining
-response_04_content = generate_response("llama3.1", prompt_04)
+response_04_content = generate_response(None, prompt_04)
 if response_04_content:
     print(response_04_content)
 
@@ -54,7 +54,7 @@ if response_04_content:
 prompt_05 = "Explain the role of a SOC Analyst in cybersecurity."
 print("<agent-05> Generating response...")
 
-response_05_content = generate_response("llama3.1", prompt_05)
+response_05_content = generate_response(None, prompt_05)
 if response_05_content:
     print(response_05_content)
 
@@ -62,7 +62,7 @@ if response_05_content:
 prompt_06 = f"{response_05_content} What are the key responsibilities of a SOC Analyst?"
 print("<agent-06> Generating response...")
 
-response_06_content = generate_response("llama3.1", prompt_06)
+response_06_content = generate_response(None, prompt_06)
 if response_06_content:
     print(response_06_content)
 
@@ -70,7 +70,7 @@ if response_06_content:
 prompt_07 = f"{response_06_content} Can you list common cybersecurity threats that SOC Analysts often deal with?"
 print("<agent-07> Generating response...")
 
-response_07_content = generate_response("llama3.1", prompt_07)
+response_07_content = generate_response(None, prompt_07)
 if response_07_content:
     print(response_07_content)
 
@@ -78,6 +78,6 @@ if response_07_content:
 prompt_08 = f"{response_07_content} What are some best practices for responding to cybersecurity incidents?"
 print("<agent-08> Generating response...")
 
-response_08_content = generate_response("llama3.1", prompt_08)
+response_08_content = generate_response(None, prompt_08)
 if response_08_content:
     print(response_08_content)

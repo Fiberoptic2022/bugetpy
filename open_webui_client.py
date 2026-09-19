@@ -49,6 +49,14 @@ def get_client_settings():
     return base_url.rstrip("/"), api_key
 
 
+def get_default_model():
+    config = _load_config()
+    model = os.environ.get("OPEN_WEBUI_MODEL")
+    if not model and config.has_option("OPEN_WEBUI", "MODEL"):
+        model = config["OPEN_WEBUI"]["MODEL"]
+    return model or "llama3.1"
+
+
 def generate_response(model, prompt, messages=None, timeout=120, connect_timeout=5):
     """Send a chat completion request to Open WebUI and return the reply text.
 
