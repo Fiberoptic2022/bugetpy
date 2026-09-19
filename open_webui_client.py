@@ -77,7 +77,9 @@ def generate_response(model, prompt, messages=None, timeout=120, connect_timeout
             json={"model": model, "messages": payload_messages},
             timeout=(connect_timeout, timeout),
         )
-        response.raise_for_status()
+        if not response.ok:
+            print(f"An error occurred while calling Open WebUI (model={model!r}): {response.status_code} {response.reason} - {response.text[:500]}")
+            return None
         return response.json()["choices"][0]["message"]["content"]
     except requests.exceptions.RequestException as e:
         print(f"An error occurred while calling Open WebUI: {e}")
