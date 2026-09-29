@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import subprocess
+from tkinter import messagebox
 import ollama
 
 # Define a class for interacting with the AI model
@@ -25,7 +26,7 @@ class AIChat:
             response = ollama.chat(model=self.model_name, messages=[{"role": "user", "content": prompt}])
             return response["message"]["content"]
         except Exception as e:
-            ctk.CTkMessagebox.show_error("API Error", f"An error occurred while generating the response: {e}")
+            messagebox.showerror("API Error", f"An error occurred while generating the response: {e}")
             return None
 
 # Define a class for the GUI application
@@ -72,7 +73,7 @@ class ChatApp:
         # Get the user input prompt
         prompt = self.prompt_entry.get().strip()
         if not prompt:
-            ctk.CTkMessagebox.show_warning("Input Error", "Please enter a prompt.")
+            messagebox.showwarning("Input Error", "Please enter a prompt.")
             return
 
         # Display the user's prompt in the text area
